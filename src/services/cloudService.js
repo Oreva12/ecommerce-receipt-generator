@@ -12,11 +12,11 @@ const uploadToCloud = async (filePath, receiptId) => {
         const result = await cloudinary.uploader.upload(filePath, {
             public_id: receiptId,
             folder: 'receipts',
-            resource_type: 'raw' // Important for PDF files
+            resource_type: 'raw'
         });
 
         console.log(`[Phase 5] Cloud upload successful: ${result.secure_url}`);
-        return result.secure_url; // This is the link we will save
+        return result.secure_url;
     } catch (error) {
         console.error("[Phase 5] Cloudinary Upload Error:", error.message);
         throw error;

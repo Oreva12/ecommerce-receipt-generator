@@ -24,6 +24,8 @@ const handlePaymentSuccess = async (req, res) => {
             unit_price: item.price
         })),
         financials: {
+            subtotal: rawOrder.totals.subtotal,
+            tax: rawOrder.totals.tax,
             grand_total: rawOrder.totals.grand_total
         },
         order_date_iso: now.toISOString(),

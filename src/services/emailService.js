@@ -2,15 +2,12 @@ const { Resend } = require('resend');
 const fs = require('fs');
 const path = require('path');
 
-// 1. Initialize dotenv at the very top of this file or in app.js
 require('dotenv').config({ path: path.join(__dirname, '../../.env') }); 
 
-// 2. Now initialize Resend using the variable
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 const sendReceiptEmail = async (customerEmail, receiptId, filePath) => {
     try {
-        // Double-check if file exists before trying to read it
         if (!fs.existsSync(filePath)) {
             throw new Error(`File not found at ${filePath}`);
         }
@@ -19,7 +16,7 @@ const sendReceiptEmail = async (customerEmail, receiptId, filePath) => {
 
         await resend.emails.send({
             from: 'Receipts <onboarding@resend.dev>', 
-            to: customerEmail, // MUST be your Resend login email for testing
+            to: customerEmail,
             subject: `Your Receipt for Order ${receiptId}`,
             html: `
                 <h1>Order Confirmed!</h1>
@@ -39,7 +36,6 @@ const sendReceiptEmail = async (customerEmail, receiptId, filePath) => {
 
         console.log(`[Phase 4] Email sent successfully to ${customerEmail}`);
     } catch (error) {
-        // Non-functional Requirement: Failed emails must be logged
         console.error("[Phase 4] Email Service Error:", error.message);
     }
 };
