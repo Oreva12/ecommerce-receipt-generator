@@ -101,7 +101,9 @@ Use **Thunder Client** or **Postman** to send a `POST` request to:
   },
   "items": [
     { "name": "Wireless Headphones", "quantity": 1, "price": 150 },
-    { "name": "USB-C Cable", "quantity": 2, "price": 25 }
+    { "name": "USB-C Cable", "quantity": 2, "price": 25 },
+    { "name": "Laptop Charger", "quantity": 1, "price": 73.00 },
+    { "name": "Laptop Wrapper", "quantity": 1, "price": 20.00 }
   ],
   "totals": {
     "grand_total": 200
